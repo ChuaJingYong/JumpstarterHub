@@ -1,0 +1,68 @@
+.form{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 600px;
+    width: 400px;
+}
+
+/* upper section  */
+.form-upper-section{
+    border: 1px solid black;
+    align-items: center;
+    justify-content: center;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.input-space{
+    width: 200px;
+    border: 1px solid black;
+    height: 300px;
+    overflow-y: scroll;
+}
+
+.edit-space{
+    width: 300px;
+    border: 1px solid black;
+    height: 300px;
+    overflow-y: scroll;
+    display: none;
+}
+
+.form-title{
+    margin:10px 0;
+    font-size:16px;
+    font-weight: 900;
+    font-family: 'Courier New', Courier;
+}
+
+.side-by-side{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 5px 0;
+}
+
+/* lower section  */
+.form-lower-section{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.form-lower-section >button{
+
+}
+
+#save{
+    display: none;
+}
+
+#cancel{
+    display: none;
+}
