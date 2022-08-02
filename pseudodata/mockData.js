@@ -53,4 +53,6 @@ let listOfCoreComponents = [{title:"CSS Bouncing ball",id:"20220728eifcl"},{titl
 let listOfMidComponents = [{title:"Multiplayer Game Room",id:"20220730opnli"}]
 let listOfLargeComponents = [{title:"Reddit clone",id:"20220823eiult"}]
 let listOfAllComponents = [moduleComponent,moduleComponent,moduleComponent]
+let moduleType = ["coreModule","midModule","largeModule"]
+
 
