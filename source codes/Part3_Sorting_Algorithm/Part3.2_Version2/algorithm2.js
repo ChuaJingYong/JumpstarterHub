@@ -7,6 +7,24 @@
 //     {title:"Reddit clone",id:"20220823eiult"}]
 // let listOfAllComponents = [moduleComponent,moduleComponent,moduleComponent]
 
+// ---------------------------------------------
+// -------------Remaining Tasks To Do-----------
+// ---------------------------------------------
+
+// 1. Display for all core components connected to the mid and large components
+// 2. Let the left side and right side of the connected mid components show their core componenents in a neat way.
+// (Cuz if all of them show their core connections on the right side only, the left side will look pretty messy)
+// 3. If clicked on the mid component, now the mid component replaces the main view and it will zoom into it. 
+// Users can see more clearly on the mid component details and the core component details on the side.
+
+// --------Extra feature if have enough time----
+// 4. Add CSS arrow effects to link from main circle to supporting circles
+
+// ---------------Side note---------------------
+// Feel free to change some variable names if you feel it's more appropriate!
+
+
+// Mock Data to be used
 let listOfCoreComponents = [
     {title:"A1",id:"1_1"},
     {title:"A2",id:"1_2"},
@@ -83,9 +101,7 @@ let listOfLargeComponents = [
 
 // let listOfAllComponents = [moduleComponent,moduleComponent,moduleComponent]
 
-// function displayMidComponents
-// IF click show coreComponents
-// 
+
 // Define the axis shift constants based on the midComponentContainer dimensions
 let midComponentContainerWidthDimension = document.getElementById("midComponentContainer").clientWidth
 let midComponentContainerHeightDimension = document.getElementById("midComponentContainer").clientHeight
@@ -99,17 +115,27 @@ let OWN_RADIUS_OFFSET = MID_COMPONENT_RADIUS/2
 // Setting the distance of the mid components from the large parent component
 let EXTENDED_RADIUS = 100
 let mockDataForLargeComponent = {title:"C1",id:"3_1", 
-midComponents:[
-    {title:"B1",id:"2_1"},
-    {title:"B2",id:"2_2"},
-    {title:"B3",id:"2_3"},
-    {title:"B1",id:"2_1"},
-    {title:"B2",id:"2_2"},
-    {title:"B3",id:"2_3"}],
-coreComponents:[
-    {title:"A13",id:"1_13"},
-    {title:"A14",id:"1_14"},
-    {title:"A15",id:"1_15"}]
+                                    midComponents:[
+                                        {title:"B1",id:"2_1"},
+                                        {title:"B2",id:"2_2"},
+                                        {title:"B3",id:"2_3"},
+                                        {title:"B1",id:"2_1"},
+                                        {title:"B2",id:"2_2"},
+                                        {title:"B3",id:"2_3"}],
+                                    coreComponents:[
+                                        {title:"A13",id:"1_13"},
+                                        {title:"A14",id:"1_14"},
+                                        {title:"A15",id:"1_15"}]
+                                    }
+
+const openView = document.getElementById("large")
+openView.addEventListener('click',openCoreLinkView)
+
+// When user clicks on the large component, it will turn the details visible and display all the relevant direct connections of children components to this parent component
+function openCoreLinkView(){
+    document.getElementById("midExpandedContainer").style.visibility = "visible";
+    // Auto generate new div based on the 
+    displayMidConnections()
 }
 
 const closeView = document.getElementById("closeView")
@@ -124,26 +150,11 @@ function hideCoreLinkView(){
     removeAllChildComponents(arrOfMidComponents.length)
 }
 
-const openView = document.getElementById("large")
-openView.addEventListener('click',openCoreLinkView)
-
-function openCoreLinkView(){
-    document.getElementById("midExpandedContainer").style.visibility = "visible";
-    // Auto generate new div based on the 
-    displayMidConnections()
-}
-
 function removeAllChildComponents(numberOfComponents){
     for(let i = 0; i<numberOfComponents; i++){
         document.querySelector("#pokemon").remove()
         }  
     console.log("All previous elements deleted!")
-}
-
-function caclulateXYPosition (radius,angle){
-    let x = radius*Math.sin(Math.PI * 2 * angle / 360)
-    let y = radius*Math.cos(Math.PI * 2 * angle / 360)
-    return [x,y]
 }
 
 function getAllPositions(radius,numberOfComponents){
@@ -163,6 +174,12 @@ function getAllPositions(radius,numberOfComponents){
     })
     console.log(arrOfPositions)
     return arrOfPositions
+}
+
+function caclulateXYPosition (radius,angle){
+    let x = radius*Math.sin(Math.PI * 2 * angle / 360)
+    let y = radius*Math.cos(Math.PI * 2 * angle / 360)
+    return [x,y]
 }
 
 function addElement(x,y){
@@ -209,9 +226,9 @@ function displayMidConnections(){
 
     let arrOfPositions = getAllPositions(EXTENDED_RADIUS,numberofMidComponents.length)
 
-    for (i of arrOfPositions){
+    for (arr of arrOfPositions){
         // Grab all the x-y positions and make a new div for each of them
-        let [x,y] = i
+        let [x,y] = arr
         addElement(x,y)
     }
 }
