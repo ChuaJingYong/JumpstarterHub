@@ -227,7 +227,6 @@ function displayMidConnections(){
     document.getElementById("midExpandedContainer").style.visibility = "visible";
 
     let [numberofMidComponents,numberOfCoreComponents] = getNumberOfConnectedChildren(mockDataForLargeComponent)
-
     let arrOfPositions = getAllPositions(EXTENDED_RADIUS,numberofMidComponents.length)
 
     for (arr of arrOfPositions){
