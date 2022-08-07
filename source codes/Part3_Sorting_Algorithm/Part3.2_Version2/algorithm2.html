@@ -1,0 +1,126 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithm click effects</title>
+    <link rel="stylesheet" href="./algorithm2.css">
+    <script src="./algorithm2.js" defer></script>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .canvasContainer{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            /* background-color:orange; */
+        }
+
+        .large{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: orange;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* align-self: center; */
+        }
+        .large>p{
+            padding:10px;
+            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        .midExpandedContainer{
+            visibility: hidden;
+            /* justify-content: center;
+            align-items: center; */
+            width: 500px;
+            height: 500px;
+            /* background-color: #90e0ef; */
+            position: relative;
+            z-index: 300;
+        }
+
+        .cancelCoreView{
+            width: 30px;
+            height:30px;
+            padding: 10px;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            z-index: 300;
+        }
+
+        .cancelCoreView>a>img{
+            width: 100%;
+            height: 100%;
+        }
+        .midComponentContainer{
+            width: 100%;
+            height: 100%;
+            /* position: absolute; */
+            border-radius: 20px;
+            top: 0;
+            left: 0;
+            /* background: rgba(255, 255, 255, 0.01); */
+            background-color: rgb(144, 224, 239,0.3);
+            /* z-index: 100; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .mid{
+            height: 100px;
+            width: 100px;
+            background-color: blue;
+            border-radius: 50%;
+            position: absolute;
+        }
+        
+        .child1{
+            /* Just for testing purposes */
+            background-color: black;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+            left: 225px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="canvasContainer">
+        <a href="#" class="large" id="large"><p>Show Connections</p></a>
+
+        <div class="midExpandedContainer" id="midExpandedContainer">
+            <div class="cancelCoreView">
+                
+                <a href="#">
+                    <img src="https://cdn-icons.flaticon.com/png/512/3588/premium/3588762.png?token=exp=1659535068~hmac=f6178b9f5057df14eadce2ba8f947d34" 
+                    alt="close button"
+                    id="closeView">
+                </a>
+            </div>
+            <div class="midComponentContainer" id="midComponentContainer">
+                
+                <div class="mid">
+                </div>
+                <div class="child1"><a href="#"></a></div>
+            </div>
+        </div> 
+
+    </div>
+</body>
+</html>
