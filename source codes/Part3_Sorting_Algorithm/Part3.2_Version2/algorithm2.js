@@ -139,6 +139,20 @@ function openCoreLinkView(){
     displayMidConnections()
 }
 
+function displayMidConnections(){
+    // Show the pop up connections
+    document.getElementById("midExpandedContainer").style.visibility = "visible";
+
+    let [numberofMidComponents,numberOfCoreComponents] = getNumberOfConnectedChildren(mockDataForLargeComponent)
+    let arrOfPositions = getAllPositions(EXTENDED_RADIUS,numberofMidComponents.length)
+
+    for (arr of arrOfPositions){
+        // Grab all the x-y positions and make a new div for each of them
+        let [x,y] = arr
+        addElement(x,y)
+    }
+}
+
 const closeView = document.getElementById("closeView")
 closeView.addEventListener('click',hideCoreLinkView)
 
@@ -220,20 +234,6 @@ function getOffsetRelativePositions (x,y){
     let newY= Y_SHIFT - Math.round(y) - OWN_RADIUS_OFFSET + "px" //minus for y direction because positive y means going downwards
     console.log(newX,newY)
     return [newX,newY]
-}
-
-function displayMidConnections(){
-    // Show the pop up connections
-    document.getElementById("midExpandedContainer").style.visibility = "visible";
-
-    let [numberofMidComponents,numberOfCoreComponents] = getNumberOfConnectedChildren(mockDataForLargeComponent)
-    let arrOfPositions = getAllPositions(EXTENDED_RADIUS,numberofMidComponents.length)
-
-    for (arr of arrOfPositions){
-        // Grab all the x-y positions and make a new div for each of them
-        let [x,y] = arr
-        addElement(x,y)
-    }
 }
 
 // document.body.onload = addElement()
