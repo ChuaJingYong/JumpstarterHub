@@ -9,15 +9,17 @@
 </head>
 
 <body>
-    <div>
+    <div id='avatar_1'>
         <img id="profile1" style="cursor:pointer;width: 100px;border:1px solid black; border-radius:50%;"
-            src="../assets/avatar.jpeg" alt="dummy-profile">
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv0oOPjm3Ff-EHEB_2oyTMoZlvL8OqWSc74WXQqQIrcw&s"
+            alt="dummy-profile">
     </div>
 
     <div class="form">
         <div class="form-upper-section">
             <img id="profile1" style="cursor:pointer;width: 100px;border:1px solid black; border-radius:50%;"
-                src="../assets/avatar.jpeg" alt="dummy-profile">
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv0oOPjm3Ff-EHEB_2oyTMoZlvL8OqWSc74WXQqQIrcw&s"
+                alt="dummy-profile">
             <span class="form-title">Pomodoro Clone</span>
             <div class="input-space"></div>
             <div class="edit-space">
@@ -41,8 +43,7 @@
 
                     <div class="side-by-side">
                         <label for="features">Features: </label>
-                        <textarea name="features" width="1px" data-name="features" id="features" type="text"
-                            required>
+                        <textarea name="features" width="1px" data-name="features" id="features" type="text" required>
                         </textarea>
                     </div>
 
@@ -53,54 +54,54 @@
                         </textarea>
                     </div>
 
-                    <label for="tags">Tagss: </label>
-                    <select id="tags" name="tags">
-                        <option name="tags" value="Productivity">Productivity</option>
-                        <option name="tags" value="Database">Database</option>
-                    </select>
+                    <div class="side-by-side">
+                        <label for="tags">Tags: </label>
+                        <select id="tags" name="tags">
+                            <option name="tags" value="Productivity">Productivity</option>
+                            <option name="tags" value="Database">Database</option>
+                        </select>
+                    </div>
 
                     <div class="side-by-side">
                         <label for="icon">Icon link: </label>
                         <input name="icon" width="1px" data-name="icon" id="icon" type="url" required>
                     </div>
 
-                    <label for="children">Children: </label>
-                    <select id="children" name="children">
-                        <option name="children" value="Core1">Core1</option>
-                        <option name="children" value="Core2">Core2</option>
-                        <option name="children" value="Core3">Core3</option>
-                    </select>
+                    <div class="side-by-side">
+                        <label for="children">Children: </label>
+                        <select id="children" name="children">
+                            <option name="children" value="none">Select an element</option>
+                        </select>
+                    </div>
 
-                    <label for="midparent">Midparent: </label>
-                    <select id="midparent" name="midparent">
-                        <option name="midparent" value="Core1">Core1</option>
-                        <option name="midparent" value="Core2">Core2</option>
-                        <option name="midparent" value="Core3">Core3</option>
-                    </select>
+                    <div class="side-by-side">
+                        <label for="midparent">Midparent: </label>
+                        <select id="midparent" name="midparent">
+                            <option name="midparent" value="Core1">Core1</option>
+                            <option name="midparent" value="Core2">Core2</option>
+                            <option name="midparent" value="Core3">Core3</option>
+                        </select>
+                    </div>
 
-                    <label for="largeparent">Largeparent: </label>
-                    <select id="largeparent" name="largeparent">
-                        <option name="largeparent" value="Core1">Core1</option>
-                        <option name="largeparent" value="Core2">Core2</option>
-                        <option name="largeparent" value="Core3">Core3</option>
-                    </select>
-
-
+                    <div class="side-by-side">
+                        <label for="largeparent">Largeparent: </label>
+                        <select id="largeparent" name="largeparent">
+                            <option name="largeparent" value="Core1">Core1</option>
+                            <option name="largeparent" value="Core2">Core2</option>
+                            <option name="largeparent" value="Core3">Core3</option>
+                        </select>
+                    </div>
                 </form>
-
             </div>
-
         </div>
 
         <div class="form-lower-section">
             <button type="button" id="edit">Edit</button>
             <button type="button" id="close">Close</button>
-            <button type="button" id="save"><input type="submit" value="Save" data-wait="Please wait..."
-                    class="" /></button>
+            <button type="button" id="save">Save</button>
             <button type="button" id="cancel">Cancel</button>
         </div>
 
-        <div></div>
     </div>
     <script src="./InputForm.js"></script>
 </body>
