@@ -142,10 +142,8 @@ function openCoreLinkView(){
 function displayMidConnections(){
     // Show the pop up connections
     document.getElementById("midExpandedContainer").style.visibility = "visible";
-
     let [numberofMidComponents,numberOfCoreComponents] = getNumberOfConnectedChildren(mockDataForLargeComponent)
     let arrOfPositions = getAllPositions(EXTENDED_RADIUS,numberofMidComponents.length)
-
     for (arr of arrOfPositions){
         // Grab all the x-y positions and make a new div for each of them
         let [x,y] = arr
@@ -206,6 +204,7 @@ function caclulateXYPosition (radius,angle){
     return [x,y]
 }
 
+// create 'pokemon' element
 function addElement(x,y){
     const newDiv = document.createElement("div")
     // newDiv.id = "div_" + new Date().getTime().toString()
