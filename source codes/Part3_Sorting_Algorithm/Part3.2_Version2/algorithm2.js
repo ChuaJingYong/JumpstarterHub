@@ -12,7 +12,7 @@
 // ---------------------------------------------
 
 // 1. Display for all core components connected to the mid and large components
-// 2. Let the left side and right side of the connected mid components show their core componenents in a neat way.
+// 2. Let the left side and right side of the connected mid components show their core components in a neat way.
 // (Cuz if all of them show their core connections on the right side only, the left side will look pretty messy)
 // 3. If clicked on the mid component, now the mid component replaces the main view and it will zoom into it. 
 // Users can see more clearly on the mid component details and the core component details on the side.
