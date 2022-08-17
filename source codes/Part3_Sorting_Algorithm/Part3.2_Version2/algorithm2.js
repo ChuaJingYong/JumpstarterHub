@@ -147,7 +147,9 @@ function displayMidConnections(){
     for (arr of arrOfPositions){
         // Grab all the x-y positions and make a new div for each of them
         let [x,y] = arr
+        addElementCanvas(x,y)
         addElement(x,y)
+        addCore(x,y)
     }
 }
 
@@ -208,7 +210,7 @@ function caclulateXYPosition (radius,angle){
 function addElement(x,y){
     const newDiv = document.createElement("div")
     // newDiv.id = "div_" + new Date().getTime().toString()
-    newDiv.id ="pokemon"
+    newDiv.className ="pokemon"
     newDiv.style.position = "absolute"
     newDiv.style.background = "orange"
     newDiv.style.width = MID_COMPONENT_RADIUS + "px"
@@ -226,13 +228,61 @@ function addElement(x,y){
     box.appendChild(newDiv);
     console.log("newElement created!")
 
+
 }
 
+
+// Edit: took of the unit px
 function getOffsetRelativePositions (x,y){
-    let newX = X_SHIFT + Math.round(x) - OWN_RADIUS_OFFSET + "px"
-    let newY= Y_SHIFT - Math.round(y) - OWN_RADIUS_OFFSET + "px" //minus for y direction because positive y means going downwards
+    let newX = X_SHIFT + Math.round(x) - OWN_RADIUS_OFFSET
+    let newY= Y_SHIFT - Math.round(y) - OWN_RADIUS_OFFSET //minus for y direction because positive y means going downwards
     console.log(newX,newY)
     return [newX,newY]
 }
 
 // document.body.onload = addElement()
+
+// part 3.3
+// create core element
+function addCore(x,y) {
+    const newCoreDiv = document.createElement("div");
+    newCoreDiv.className = "coreElement";
+    newCoreDiv.style.position = "absolute";
+    newCoreDiv.style.background = "green";
+    newCoreDiv.style.width = "50px";
+    newCoreDiv.style.height = "50px";
+    newCoreDiv.style.borderRadius = "50%";
+    newCoreDiv.style.zIndex = "500";
+    newCoreDiv.style.cursor = "pointer";
+    let [newX, newY] = getOffsetCoreRelativePositions(x,y);
+    newCoreDiv.style.left = newX;
+    newCoreDiv.style.top = newY;
+
+    const box = document.getElementsByClassName('pokemonCanvas');
+    box.appendChild(newCoreDiv);
+}
+
+// // get position for core element 
+function getOffsetCoreRelativePositions(x,y) {
+    let newX = 100/2 + Math.round(x) - 50/2
+    let newY= 100/2 - Math.round(y) - 50/2 //minus for y direction because positive y means going downwards
+    console.log(`coreX : ${newX}, coreY: ${newY}`);
+    return [newX,newY]
+}
+
+// create mid element canvas
+function addElementCanvas(x,y) {
+    const newCoreContainer = document.createElement("div");
+    newCoreContainer.className = "pokemonCanvas"
+    newCoreContainer.style.width = "100px";
+    newCoreContainer.style.height = "100px";
+    newCoreContainer.style.background = "lightgreen";
+    newCoreContainer.style.zIndex = "200";
+    let [newX, newY] = getOffsetRelativePositions(x,y);
+    newCoreContainer.style.left = newX - 25;
+    newCoreContainer.style.top = newY - 25;
+    newCoreContainer.style.position = "absolute";
+
+    const box = document.getElementById('midComponentContainer');
+    box.appendChild(newCoreContainer);
+} 

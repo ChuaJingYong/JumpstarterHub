@@ -77,8 +77,8 @@ body{
     position: absolute;
 }
 
-.child1{
-    /* Just for testing purposes */
+/* .child1{
+    /* Just for testing purposes 
     background-color: black;
     width: 25px;
     height: 25px;
@@ -87,4 +87,5 @@ body{
     top: 100px;
     left: 200px;
     cursor: pointer;
-}
+} 
+*/ 
