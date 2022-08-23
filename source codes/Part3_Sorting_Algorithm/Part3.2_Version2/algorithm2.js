@@ -101,7 +101,6 @@ let listOfLargeComponents = [
 
 // let listOfAllComponents = [moduleComponent,moduleComponent,moduleComponent]
 
-
 // Define the axis shift constants based on the midComponentContainer dimensions
 let midComponentContainerWidthDimension = document.getElementById("midComponentContainer").clientWidth
 let midComponentContainerHeightDimension = document.getElementById("midComponentContainer").clientHeight
@@ -130,10 +129,10 @@ let mockDataForLargeComponent = {title:"C1",id:"3_1",
                                     }
 
 const openView = document.getElementById("large")
-openView.addEventListener('click',openCoreLinkView)
+openView.addEventListener('click',openMidLinkView)
 
 // When user clicks on the large component, it will turn the details visible and display all the relevant direct connections of children components to this parent component
-function openCoreLinkView(){
+function openMidLinkView(){
     document.getElementById("midExpandedContainer").style.visibility = "visible";
     // Auto generate new div based on the 
     displayMidConnections()
@@ -227,10 +226,7 @@ function addElement(x,y){
     const box = document.getElementById('midComponentContainer');
     box.appendChild(newDiv);
     console.log("newElement created!")
-
-
 }
-
 
 // Edit: took of the unit px
 function getOffsetRelativePositions (x,y){
@@ -240,8 +236,6 @@ function getOffsetRelativePositions (x,y){
     return [newX,newY]
 }
 
-// document.body.onload = addElement()
-
 // part 3.3
 // create core element
 function addCore(x,y) {
@@ -249,21 +243,26 @@ function addCore(x,y) {
     newCoreDiv.className = "coreElement";
     newCoreDiv.style.position = "absolute";
     newCoreDiv.style.background = "green";
-    newCoreDiv.style.width = "50px";
-    newCoreDiv.style.height = "50px";
+    newCoreDiv.style.width = "25px";
+    newCoreDiv.style.height = "25px";
     newCoreDiv.style.borderRadius = "50%";
     newCoreDiv.style.zIndex = "500";
     newCoreDiv.style.cursor = "pointer";
+    newCoreDiv.style.visibility = "hidden";
     let [newX, newY] = getOffsetCoreRelativePositions(x,y);
     newCoreDiv.style.left = newX;
     newCoreDiv.style.top = newY;
 
+    // add element to DOM, inside the pop up coreComponentContainer
     const box = document.getElementsByClassName('pokemonCanvas');
-    box.appendChild(newCoreDiv);
+    // box[0] grab the first pokemonCanvas as there are multiples same div
+    box[0].appendChild(newCoreDiv);
+    console.log("core element created!")
 }
 
-// // get position for core element 
+// get position for core element 
 function getOffsetCoreRelativePositions(x,y) {
+    // hard coded value
     let newX = 100/2 + Math.round(x) - 50/2
     let newY= 100/2 - Math.round(y) - 50/2 //minus for y direction because positive y means going downwards
     console.log(`coreX : ${newX}, coreY: ${newY}`);
@@ -276,13 +275,28 @@ function addElementCanvas(x,y) {
     newCoreContainer.className = "pokemonCanvas"
     newCoreContainer.style.width = "100px";
     newCoreContainer.style.height = "100px";
-    newCoreContainer.style.background = "lightgreen";
-    newCoreContainer.style.zIndex = "200";
+    newCoreContainer.style.background = "#d2f8d2";
+    //newCoreContainer.style.zIndex = "100";
     let [newX, newY] = getOffsetRelativePositions(x,y);
-    newCoreContainer.style.left = newX - 25;
-    newCoreContainer.style.top = newY - 25;
+    newCoreContainer.style.left = newX - 15;
+    newCoreContainer.style.top = newY - 15;
     newCoreContainer.style.position = "absolute";
 
     const box = document.getElementById('midComponentContainer');
     box.appendChild(newCoreContainer);
 } 
+
+// click pokemon element to display core element
+const openCoreView = document.getElementsByClassName('pokemon')
+console.log("this",openCoreView);
+// revise this.
+for (let i=0; i<openCoreView.length; i++){
+    console.log('that',openCoreView.item(i));
+    openCoreView.item(i).addEventListener('click',openCoreLinkView);
+}
+
+function openCoreLinkView(){
+    document.getElementsByClassName("coreElement").style.visibility = "visible";
+    // Auto generate new div based on the 
+    console.log("it works");
+}
