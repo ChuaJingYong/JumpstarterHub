@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./inputForm.css">
+    <link rel="stylesheet" href="./algorithm2.css">
+</head>
+
+<body>
+    <div class="mainContainer">
+        <div id='avatar_1'>
+            <img id="profile1" 
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv0oOPjm3Ff-EHEB_2oyTMoZlvL8OqWSc74WXQqQIrcw&s"
+                alt="dummy-profile">
+        </div>
+        
+        <div class="form hidden">
+            <div class="form-upper-section">
+                <img id="profile1"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv0oOPjm3Ff-EHEB_2oyTMoZlvL8OqWSc74WXQqQIrcw&s"
+                    alt="dummy-profile">
+                <span class="form-title">Pomodoro Clone</span>
+                <div class="input-space"></div>
+                <div class="edit-space">
+                    <form method="post">
+                        <div class="side-by-side">
+                            <label for="title">Title: </label>
+                            <input name="title" width="1px" data-name="title" id="title" type="text" required>
+                        </div>
+    
+                        <div class="side-by-side">
+                            <label for="description">Description: </label>
+                            <textarea name="description" width="1px" data-name="description" id="description" type="text"
+                                required>
+                            </textarea>
+                        </div>
+    
+                        <div class="side-by-side">
+                            <label for="github">Github link: </label>
+                            <input name="github" width="1px" data-name="github" id="github" type="url" required>
+                        </div>
+    
+                        <div class="side-by-side">
+                            <label for="features">Features: </label>
+                            <textarea name="features" width="1px" data-name="features" id="features" type="text" required>
+                            </textarea>
+                        </div>
+    
+                        <div class="side-by-side">
+                            <label for="reference">Reference: </label>
+                            <textarea name="reference" width="1px" data-name="reference" id="reference" type="text"
+                                required>
+                            </textarea>
+                        </div>
+    
+                        <div class="side-by-side">
+                            <label for="tags">Tags: </label>
+                            <select id="tags" name="tags">
+                                <option name="tags" value="Productivity">Productivity</option>
+                                <option name="tags" value="Database">Database</option>
+                            </select>
+                        </div>
+    
+                        <div class="side-by-side">
+                            <label for="icon">Icon link: </label>
+                            <input name="icon" width="1px" data-name="icon" id="icon" type="url" required>
+                        </div>
+    
+                        <div class="side-by-side">
+                            <label for="children">Children: </label>
+                            <select id="children" name="children">
+                                <option name="children" value="none">Select an element</option>
+                            </select>
+                            <ul id="childrenPopup"></ul>
+                        </div>
+    
+                        <div class="side-by-side">
+                            <label for="midparent">Midparent: </label>
+                            <select id="midparent" name="midparent">
+                                <!-- <option name="midparent" value="Core1">Core1</option>
+                                <option name="midparent" value="Core2">Core2</option>
+                                <option name="midparent" value="Core3">Core3</option> -->
+                            </select>
+                            <ul id="midparentPopup"></ul>
+                        </div>
+    <!-- Multiselect checkbox options -->
+                        <div class="side-by-side">
+                            <div id="list1" class="dropdown-check-list" tabindex="100">
+                                <span class="anchor">Select Fruits</span>
+                                <ul class="itemsTest">
+                                  <li><input type="checkbox" />Apple </li>
+                                  <!-- <li><input type="checkbox" />Orange</li>
+                                  <li><input type="checkbox" />Grapes </li>
+                                  <li><input type="checkbox" />Berry </li>
+                                  <li><input type="checkbox" />Mango </li>
+                                  <li><input type="checkbox" />Banana </li>
+                                  <li><input type="checkbox" />Tomato</li> -->
+                                </ul>
+                              </div>
+                              <div class="divid" id="divid">
+    
+                              </div>
+                        </div>
+    
+                        <div class="side-by-side">
+                            <label for="largeparent">Largeparent: </label>
+                            <select id="largeparent" name="largeparent">
+                                <!-- <option name="largeparent" value="Core1">Core1</option>
+                                <option name="largeparent" value="Core2">Core2</option>
+                                <option name="largeparent" value="Core3">Core3</option> -->
+                            </select>
+                            <ul id="largeparentPopup"></ul>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    
+            <div class="form-lower-section">
+                <button type="button" id="edit">Edit</button>
+                <button type="button" id="close">Close</button>
+                <button type="button" id="save">Save</button>
+                <button type="button" id="cancel">Cancel</button>
+                <button type="button" id="viewConnections">View Connections</button>
+            </div>
+        </div>
+    
+        <!-- Part 3 Arrangement Algorithms -->
+        <!-- <div class="canvasContainer">
+            <a href="#" class="large" id="large"><p>Show Connections</p></a>
+    
+            <div class="midExpandedContainer" id="midExpandedContainer">
+                <div class="cancelCoreView">
+                    
+                    <a href="#">
+                        <img src="https://cdn-icons.flaticon.com/png/512/3588/premium/3588762.png?token=exp=1659535068~hmac=f6178b9f5057df14eadce2ba8f947d34" 
+                        alt="close button"
+                        id="closeView">
+                    </a>
+                </div>
+                <div class="midComponentContainer" id="midComponentContainer">
+                    
+                    <div class="mid">
+                    </div>
+                    <div class="child1"><a href="#"></a></div>
+                </div>
+            </div> 
+    
+        </div> -->
+
+
+    </div>
+    
+    <script src="./InputForm.js"></script>
+    <script src="./algorithm2.js"></script>
+</body>
+
+</html>
