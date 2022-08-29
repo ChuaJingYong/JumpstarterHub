@@ -147,9 +147,16 @@ function displayMidConnections(){
         // Grab all the x-y positions and make a new div for each of them
         let [x,y] = arr
         addElementCanvas(x,y)
-        addElement(x,y)
-        addCore(x,y)
+        addElement(x,y) //pokemon created
+        addCore(x,y)    //core created
     }
+    const coreNodeList = [...document.getElementsByClassName("pokemon")];
+    console.log("created:",coreNodeList);
+    coreNodeList.forEach((element)=> {
+        console.log('created');
+        console.log(element);
+        element.addEventListener('click',openCoreLinkView);
+    }); 
 }
 
 const closeView = document.getElementById("closeView")
@@ -286,17 +293,13 @@ function addElementCanvas(x,y) {
     box.appendChild(newCoreContainer);
 } 
 
-// click pokemon element to display core element
-const openCoreView = document.getElementsByClassName('pokemon')
-console.log("this",openCoreView);
-// revise this.
-for (let i=0; i<openCoreView.length; i++){
-    console.log('that',openCoreView.item(i));
-    openCoreView.item(i).addEventListener('click',openCoreLinkView);
-}
 
 function openCoreLinkView(){
-    document.getElementsByClassName("coreElement").style.visibility = "visible";
-    // Auto generate new div based on the 
     console.log("it works");
+    const coreNodeList = [...document.getElementsByClassName("coreElement")];
+    console.log(coreNodeList);
+    coreNodeList.forEach((eachElement) => {
+        eachElement.style.visibility = "visible";
+    });
+    // Auto generate new div based on the 
 }
