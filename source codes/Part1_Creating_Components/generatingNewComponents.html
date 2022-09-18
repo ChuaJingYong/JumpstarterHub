@@ -1,1 +1,195 @@
-<!-- Fork this folder and please update the codes here -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Modular Component</title>
+
+    <style>
+        *{
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box
+        }
+
+        .canvas{
+            width: 50rem;
+            height: 50rem;
+            border: 1px solid rgb(210, 205, 205);
+            padding: 0.5rem;
+            background-color:rgba(0, 0, 0, 0.05); 
+        }
+
+        .btn{
+            padding: 1rem; 
+            margin: 0.25rem; 
+            border: 0.25rem solid;
+            border-radius: 0.25rem;
+        }
+
+        .core{
+            background-color: #A7EBED;
+            border: 0.25rem solid #03F2F7;
+        }
+
+        .mid{
+            background-color: #51A3F7;
+            border: 0.25rem solid #0040F8;
+        }
+
+        .large{
+            background-color: #C994F0;
+            border: 0.25rem solid #9300FF;
+        }
+
+        .btn:hover{
+            background-color: white;
+            color: grey
+        }
+
+        .selector{
+            position: absolute; 
+            background-color:#FFBB00;
+            width: 20rem; 
+            border: 0.25rem solid white;
+            top: -50%;
+        }
+
+        .module{
+            height: 2.5rem;
+            width: 5rem;
+            position: absolute; 
+            padding: 1rem;
+            border: 0.25rem solid;
+            border-radius: 5px; 
+            margin-top: 0.25rem;
+            display: none; 
+        }
+
+        .module.show{
+            display: block; 
+        }
+
+        .module.core{
+            background-color: #A7EBED;
+            border: 0.25rem solid #03F2F7;
+        }
+
+        .module.mid{
+            background-color: #51A3F7;
+            border: 0.25rem solid #0040F8;
+        }
+
+        .module.large{
+            background-color: #C994F0;
+            border: 0.25rem solid #9300FF;
+        }
+
+    </style>
+</head>
+<body>
+        <!-- The Popup Form-->
+        <div class="selector" id="selector_form">
+            <div class="header">
+                <div class="title">Select Module Type</div>
+            </div>
+            <div class="body">
+                <button class="btn core" id="submit_core" value="Core">
+                    <span>Core</span>
+                </button>
+                <button class="btn mid" id="submit_mid" value="Mid">
+                    <span>Mid</span>
+                </button>
+                <button class="btn large" id="submit_large" value="Large">
+                    <span>Large</span>
+                </button>
+             </div>
+        </div>
+
+        <div class="canvas">
+            <div class="status" id="canvas_body">
+                <div class="module"></div>
+            </div>
+        </div>
+
+        <script>
+            const elCanvas = document.querySelector(".canvas")
+            const elPopup = document.querySelector(".selector")
+
+            let leftPos, topPos
+
+            function showPopup(e){
+                let elem = document.querySelector('.module');
+                let rect = elem.getBoundingClientRect();
+                console.log(rect)
+
+                for (const key in rect) {
+                    if (typeof rect[key] !== 'function') {
+                        let para = document.createElement('p');
+                        para.textContent  = `${key} : ${rect[key]}`;
+                        document.body.appendChild(para);
+                    }
+                }
+
+                leftPos = `${e.clientX + window.scrollX}px`
+                topPos = `${e.clientY + window.scrollY}px`
+                Object.assign(elPopup.style, {
+                    left: leftPos, 
+                    top: topPos,
+                    display: 'block', 
+                })
+            }
+
+            elCanvas.addEventListener("click", showPopup)
+ 
+            const newModule = document.querySelectorAll(".btn")
+
+            for(let item of newModule){
+                item.addEventListener("click", function(){
+                    console.log(item)
+                    const newComponent_div = document.createElement("div")
+                    const input = item.value
+                    const text = document.createTextNode(input)
+                    console.log(text)
+
+                    newComponent_div.append(text)
+                    newComponent_div.classList.add("module", "show")
+                    // newComponent_div.classList.add("show")
+                    if(input === 'Core'){
+                        newComponent_div.classList.add("core");
+                    }
+
+                    else if(input === 'Mid'){
+                        newComponent_div.classList.add("mid");
+                    }
+
+                    else if(input === 'Large'){
+                        newComponent_div.classList.add("large");
+                    }
+
+                    newComponent_div.style.left = leftPos
+                    newComponent_div.style.top = topPos
+
+                    newComponent_div.setAttribute("id",moduleID());
+                    canvas_body.appendChild(newComponent_div)
+                    elPopup.style.display = "none"
+
+                })
+            }
+
+            function moduleID(){
+                var today = new Date();
+                var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+                var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                var dateTime = date+' '+time;
+
+                console.log(dateTime)
+                return dateTime
+            }
+
+        </script>
+    
+    
+</body>
+</html>
